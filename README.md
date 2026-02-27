@@ -161,7 +161,7 @@ The 1‑cells can be grouped into three groups of two, yielding:
 $$B_o = \overline{A}C + \overline{A}B + BC$$
 \]
 
-These minimized equations for \(D\) and \(B<sub>o<sub>\) are exactly what the `fullSubtractor` module implements.
+These minimized equations for \(D\) and (B<sub>o<sub>) are exactly what the `fullSubtractor` module implements.
 
 ---
 
