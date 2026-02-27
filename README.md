@@ -54,16 +54,16 @@ with outputs:
 From the truth table (shown below), the minimized Boolean expressions for a full subtractor are:
 
 - \[
-  D = A \oplus B \oplus C
+  $$D = A \oplus B \oplus C$$
   \]
 - \[
-  B_o = \overline{A}B + \overline{A}C + BC
+  $$B_o = \overline{A}B + \overline{A}C + BC$$
   \]
 
 where:
 
-- \(\overline{A}\) denotes NOT A.
-- \(\oplus\) denotes the XOR (exclusive‑OR) operation.
+- $$\(\overline{A}\)$$ denotes NOT A.
+- $$\(\oplus\)$$ denotes the XOR (exclusive‑OR) operation.
 
 In this project, the Verilog module `fullSubtractor` realizes these equations using basic logic gates or continuous assignments.
 
@@ -99,7 +99,7 @@ The full subtractor has three inputs \(A, B, C\) and two outputs \(D, B<sub>o</s
 
 This is the **final truth table** of the 1‑bit full subtractor. It reflects the rules of single‑bit binary subtraction with borrow:
 
-- When the effective minuend is large enough (\(A \geq B + C\)), the borrow‑out \(B<sub>o</sub> = 0\).
+- When the effective minuend is large enough $$(\(A \geq B + C\))$$, the borrow‑out \(B<sub>o</sub> = 0\).
 - When the effective minuend is too small (\(A < B + C\)), the circuit borrows from the next higher bit and sets \(B<sub>o</sub> = 1\).
 
 ---
@@ -123,25 +123,25 @@ To derive minimal Boolean expressions, we use Karnaugh maps (K‑maps) with:
 From this map, the 1‑cells correspond to minterms:
 
 \[
-D = A\overline{B}\,\overline{C} + \overline{A}\,\overline{B}C + ABC + \overline{A}BC
+$$D = A\overline{B}\,\overline{C} + \overline{A}\,\overline{B}C + ABC + \overline{A}BC$$
 \]
 
 We can group and factor these minterms by introducing:
 
 \[
-X = B \oplus C
+$$X = B \oplus C$$
 \]
 
 so that:
 
 \[
-D = A\overline{X} + \overline{A}X
+$$D = A\overline{X} + \overline{A}X$$
 \]
 
 This is the classic XOR pattern:
 
 \[
-D = A \oplus X = A \oplus B \oplus C
+$$D = A \oplus X = A \oplus B \oplus C$$
 \]
 
 Thus, the **difference output** of a full subtractor is simply the XOR of all three inputs.
@@ -158,10 +158,10 @@ Thus, the **difference output** of a full subtractor is simply the XOR of all th
 The 1‑cells can be grouped into three groups of two, yielding:
 
 \[
-B_o = \overline{A}C + \overline{A}B + BC
+$$B_o = \overline{A}C + \overline{A}B + BC$$
 \]
 
-These minimized equations for \(D\) and \(B_o\) are exactly what the `fullSubtractor` module implements.
+These minimized equations for \(D\) and \(B<sub>o<sub>\) are exactly what the `fullSubtractor` module implements.
 
 ---
 
@@ -170,18 +170,18 @@ These minimized equations for \(D\) and \(B_o\) are exactly what the `fullSubtra
 The full subtractor can be implemented using a small set of logic gates:
 
 - **Difference \(D\)**: realized as a three‑input XOR, often implemented as:
-  - First stage: \(X = A \oplus B\)
-  - Second stage: \(D = X \oplus C\)
+  - First stage: $$\(X = A \oplus B\)$$
+  - Second stage: $$\(D = X \oplus C\)$$
 - **Borrow‑out \(B<sub>o</sub>\)**: realized as a sum‑of‑products (SOP) network:
-  - Term 1: \(\overline{A}B\)
-  - Term 2: \(\overline{A}C\)
-  - Term 3: \(BC\)
-  - Final OR: \(B_o = \overline{A}B + \overline{A}C + BC\)
+  - Term 1: $$\(\overline{A}B\)$$
+  - Term 2: $$\(\overline{A}C\)$$
+  - Term 3: $$\(BC\)$$
+  - Final OR: $$\(B_o = \overline{A}B + \overline{A}C + BC\)$$
 
 Conceptually:
 
-1. Invert A to produce \(\overline{A}\).
-2. Use AND gates to generate the product terms \(\overline{A}B\), \(\overline{A}C\), and \(BC\).
+1. Invert A to produce $$\(\overline{A}\)$$.
+2. Use AND gates to generate the product terms $$\(\overline{A}B\), \(\overline{A}C\), and \(BC\)$$.
 3. OR these terms to produce the borrow‑out \(B<sub>o</sub>\).
 4. Cascade XOR gates to produce the difference \(D\).
 
@@ -196,8 +196,8 @@ In Verilog, this can be written using **continuous assignments** (e.g., `assign`
 
 This section corresponds to the **logic diagram** of the full subtractor, showing:
 
-- XOR gates that together realize \(D = A \oplus B \oplus C\).
-- Inverters and AND/OR gates realizing \(B_o = \overline{A}B + \overline{A}C + BC\).
+- XOR gates that together realize $$\(D = A \oplus B \oplus C\)$$.
+- Inverters and AND/OR gates realizing $$\(B_o = \overline{A}B + \overline{A}C + BC\)$$.
 
 ![Full Subtractor Circuit](imageAssets/fullSubtractorCircuit.png)
 
