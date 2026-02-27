@@ -123,7 +123,7 @@ To derive minimal Boolean expressions, we use Karnaugh maps (K‑maps) with:
 From this map, the 1‑cells correspond to minterms:
 
 \[
-$$D = A\overline{B}\\overline{C} + \overline{A}\\overline{B}\C + ABC + \overline{A}B\overline{C}$$
+$$D = A\overline{B}\\overline{C} + \overline{A}\overline{B}\C + ABC + \overline{A}B\overline{C}$$
 \]
 
 We can group and factor these minterms by introducing:
